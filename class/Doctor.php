@@ -140,4 +140,9 @@ class Doctor extends User_class
 
         }
     }
+
+    public function searchDoc()
+    {
+
+    }
 }

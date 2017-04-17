@@ -133,4 +133,9 @@ class Patient extends User_class
 
         }
     }
+
+    public function SearchDoc()
+    {
+
+    }
 }

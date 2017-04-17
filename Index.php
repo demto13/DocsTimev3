@@ -82,9 +82,22 @@
                         <label for="aboutMeReg">About me</label>
                         <input class="form-control" type="text" id="aboutMeReg" name="aboutMeReg" required="required">
                         <label for="aopReg">Area of Practice</label>
-                        <input class="form-control" type="text" id="aopReg" name="aopReg" required="required">
+                        <select class="form-control" id="aopReg" name="aopReg">
+                            <option value="rad">Radiology</option>
+                            <option value="card">Cardiology</option>
+                            <option value="gen">General Practicioner</option>
+                            <option value="ent">Ear Nose and Throat (ENT)</option>
+                            <option value="sur">Surgery</option>
+                            <option value="old">Elderly Services</option>
+                            <option value="kids">Children Specialist</option>
+                        </select>
                         <label for="baseReg">Base Clinic</label>
-                        <input class="form-control" type="text" id="baseReg" name="baseReg" required="required">
+                        <select class="form-control" id="baseReg" name="baseReg">
+                            <option value="ari">Aberdeen Royal Infirmary</option>
+                            <option value="amh">Aberdeen Maternity Hospital</option>
+                            <option value="rch">Royal Cornhill Hospital</option>
+                            <option value="rach">Royal Aberdeen Children Hospital</option>
+                        </select>
                         <label for="dobReg">Date of Birth</label>
                         <input class="form-control" type="text" id="dobReg" name="dobReg" required="required">
                         <label for="nameReg">Name</label>

@@ -20,7 +20,7 @@ if($_SESSION['userID'] != null)
     $user = new Doctor($dbh);
     $type = $_SESSION['type'];
 
-    //echo "Welcome {$_SESSION['userID']} - {$_SESSION['userName']} - you are a : {$_SESSION['type']} Photo: {$_SESSION['photo']}:  you are logged in";
+    echo "Welcome {$_SESSION['userID']} - {$_SESSION['userName']} - you are a : {$_SESSION['type']} Photo: {$_SESSION['photo']}:  you are logged in";
 }
 else
 {
@@ -79,9 +79,9 @@ __END;
                             echo "<img class='responsive' src='uploads/pics/patient/{$_SESSION['photo']} ' alt='profile picture'>";
                         }
                     }
-                    else
+                    elseif($_SESSION['photo'] == null)
                     {
-                        echo "<img class='responsive' src='uploads/pics/defaultImage.jpeg' alt='profile picture'>";
+                        echo "<img class='responsive' src='uploads/pics/defaultimg.jpg' alt='profile picture'>";
                     }
 
 echo <<<__END
@@ -121,28 +121,29 @@ __END;
                         </div>
                         <div id="menu2" class="tab-pane fade">
                             <h3></h3>
-                            <form action="#" method="post">
+                            <form action="SearchDoc.php" method="post">
                                 <div class="form-group">
-                                    <h1>Search our singles</h1>
-                                    <label for="gender">Gender</label>
-                                    <select id="gender" name="gender" class="form-control">
-                                        <option value="Female">Female</option>
-                                        <option value="Male">Male</option>
+                                    <h1>Search our doctors</h1>
+                                    <label for="nameSearch">Name</label>
+                                    <input class="form-control" type="text" name="nameSearch" id="nameSearch">
+                                    <label for="aopSearch">Area of Practice</label>
+                                    <select id="aopSearch" class="form-control" name="aopSearch">
+                                        <option value=""></option>
+                                        <option value="rad">Radiology</option>
+                                        <option value="card">Cardiology</option>
+                                        <option value="gen">General Practicioner</option>
+                                        <option value="ent">Ear Nose and Throat(ENT)</option>
+                                        <option value="surg">Surgery</option>
+                                        <option value="old">Elderly services</option>
+                                        <option value="kids">Children specialist</option>
                                     </select>
-                                    <label for="age">Age group</label>
-                                    <select id="age" class="form-control" name="age">
-                                        <option value="18-20">18-20</option>
-                                        <option value="21-25">21-25</option>
-                                        <option value="26-30">26-30</option>
-                                        <option value="30+">30+</option>
-                                    </select>
-                                    <label for="ethnicity">Ethnicity</label>
-                                    <select id="ethnicity" class="form-control" name="ethnicity">
-                                        <option value="white">White</option>
-                                        <option value="Black">Black</option>
-                                        <option value="Black">Asian</option>
-                                        <option value="Black">Indian</option>
-                                        <option value="Black">Other</option>
+                                    <label for="baseSearch">Base Clinic</label>
+                                    <select id="baseSearch" class="form-control" name="baseSearch">
+                                        <option value=""></option>
+                                        <option value="ari">Aberdeen Royal Infirmary</option>
+                                        <option value="amh">Aberdeen Maternity Hospital</option>
+                                        <option value="rch">Royal Cornhill Hospital</option>
+                                        <option value="rach">Royal Aberdeen Children Hospital</option>
                                     </select>
                                 </div>
                                 <input type="submit" class="btn" value="Search!">
