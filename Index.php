@@ -23,12 +23,12 @@
     ?>
 
     <div class="container">
-        <div class="row">
+        <div class="row row1">
             <div class="loginBox">
-                <div class="col col-left col-sm-6">
-                    <img class=img-responsive" src="mainDocPic2.jpg" alt="main logo">
+                <div class="col col-left col-md-6">
+                    <h1>D</h1><h2>ocs</h2><h1>T</h1><h2>ime</h2>
                 </div>
-                <div class="col col-right col-sm-6">
+                <div class="col col-right col-md-6">
                     <form action="Authentication.php" method="post">
                         <div class="form-group">
                             <label for="type">Login as</label>
@@ -40,13 +40,14 @@
                             <input class="form-control" type="text" id="userName" name="userName" required="required">
                             <label for="pwd">Password</label>
                             <input class="form-control" type="password" id="pwd" name="pwd" required="required">
-                            <input type="submit" value="Submit">
+                            <input class="btn" type="submit" value="Submit">
                         </div>
-                    </form>
+                    </form><br/>
+                    <blockquote>For those who care about their health</blockquote>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row row2">
             <?php
             if(isset($_GET['err']))
             {
@@ -69,7 +70,7 @@
                 }
             }
             ?>
-            <div class="docRegBox col-sm-6">
+            <div class="docRegBox col-lg-6 col-sm-12">
                 <form action="Register.php" method="post">
                     <div class="form-group">
                         <h2>Registering as Doctor</h2>
@@ -91,11 +92,11 @@
                         <label for="yopReg">Years of Practice</label>
                         <input class="form-control" type="text" id="yopReg" name="yopReg" required="required">
                         <input class="form-control" type="hidden" id="photoReg" name="photoReg" value="null">
-                        <input class="form-control" type="submit" value="Submit">
+                        <input class="btn" type="submit" value="Submit">
                     </div>
                 </form>
             </div>
-            <div class="patRegBox col-sm-6">
+            <div class="patRegBox col-lg-6 col-sm-12">
                 <form action="Register.php" method="post">
                     <div class="form-group">
                         <h2>Registering as Patient</h2>
@@ -115,63 +116,34 @@
                         <label for="nameReg">Name</label>
                         <input class="form-control" type="text" id="nameReg" name="nameReg" required="required">
                         <input class="form-control" type="hidden" id="photoReg" name="photoReg" value="null">
-                        <input class="form-control" type="submit" value="Submit">
+                        <input class="btn" type="submit" value="Submit">
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-    <pre>
-
-        </pre>
-            <?php
-
-                if(isset($_POST['typeReg']))
-                {
-                    if($_POST['typeReg'] == "doctor")
-                    {
-                        echo <<<__END
-                        
-                            <form action="Register.php" method="post">
-                                <label for="userNameReg">UserName</label>
-                                <input type="text" id="userNameReg" name="userNameReg" required="required">
-                                <label for="pwdReg">Password</label>
-                                <input type="password" id="pwdReg" name="pwdReg" required="required">
-                                <label for="aboutMeReg">About me</label>
-                                <input type="text" id="aboutMeReg" name="aboutMeReg" required="required">
-                                <label for="aopReg">Area of Practice</label>
-                                <input type="text" id="aopReg" name="aopReg" required="required">
-                                <label for="baseReg">Base Clinic</label>
-                                <input type="text" id="baseReg" name="baseReg" required="required">
-                                <label for="dobReg">Date of Birth</label>
-                                <input type="text" id="dobReg" name="dobReg" required="required">
-                                <label for="nameReg">Name</label>
-                                <input type="text" id="nameReg" name="nameReg" required="required">
-                                <label for="yopReg">Years of Practice</label>
-                                <input type="text" id="yopReg" name="yopReg" required="required">
-                                <input type="submit" value="Submit">
-                            </form>
-
-
-__END;
-
-
-                    }
-                    else
-                    {
-                        echo <<<__END
-                        
-                            
-
-
-__END;
-                    }
-                }
-            ?>
-
-
+    <div class="container-fluid">
+        <div class="row footer-row">
+            <div class="footer-col1 col-sm-4">
+                <h3>About us</h3>
+                <p><a class="footer-a" href="#">About the authors</a></p>
+                <p><a class="footer-a" href="#">About the webpage</a></p>
+                <p><a class="footer-a" href="#">Our vision</a></p>
+                <p><a class="footer-a" href="#">Testimonials</a></p>
+                <p><a class="footer-a" href="#">Contact us</a></p>
+            </div>
+            <div class="footer-col2 col-sm-4">
+                <h3>Terms and conditions</h3>
+                <p><a class="footer-a" href="#">Terms of use</a></p>
+                <p><a class="footer-a" href="#">About cookies and cookie policy</a></p>
+                <p><a class="footer-a" href="#">Data protection</a></p>
+                <p><a class="footer-a" href="#">Privacy policy</a></p>
+                <p><a class="footer-a" href="#">Copy rights</a></p>
+            </div>
+            <div class="footer-col3 col-sm-4">
+                <h3>Something else</h3>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

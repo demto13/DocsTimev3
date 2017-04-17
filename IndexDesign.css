@@ -1,0 +1,109 @@
+body
+{
+    background-image: url("picsUsed/IndexBackground.jpg")
+}
+
+.row1
+{
+    background-image: url(mainDocPic2.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 500px;
+}
+
+.row2
+{
+    margin: 5% auto;
+}
+
+
+
+.loginBox
+{
+    width: 100%;
+    margin: 5% auto;
+    color: deeppink;
+
+}
+
+.row1 h1
+{
+    color: red;
+    font-family: fantasy;
+    display: inline;
+    font-size: 6em;
+}
+
+.row1 h2
+{
+    font-family: fantasy;
+    color: deepskyblue;
+    display: inline;
+
+    font-size: 4em;
+}
+
+blockquote
+{
+    font-family: fantasy;
+    font-size: 2em;
+    margin: 10% auto;
+}
+
+.docRegBox, .patRegBox
+{
+    border: 2px solid black;
+    border-radius: 10%;
+    background-color: white;
+    color: limegreen;
+    margin: 10% auto;
+}
+
+.docRegBox h2, .patRegBox h2
+{
+    color: deeppink;
+    text-align: center;
+}
+
+.btn
+{
+    border-radius: 10%;
+    background-color: limegreen;
+    color: white;
+    margin: 4% auto;
+    float: right;
+}
+
+.footer-row
+{
+    background-color: darkgreen;
+    text-align: center;
+    padding: 5%;
+}
+
+footer-row a
+{
+    color: white;
+    margin: 10%;
+}
+
+.footer-row a:hover
+{
+    color: lavenderblush;
+}
+
+.footer-row h3
+{
+    color: deeppink;
+}
+
+.footer-a
+{
+    color: white;
+}
+
+.footer-col1, .footer-col2
+{
+    height: 100%;
+    border-right: 1px solid grey;
+}
