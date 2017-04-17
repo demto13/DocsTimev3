@@ -80,10 +80,11 @@ class Patient extends User_class
 
                 return true;
             }
-        else
-        {
-            header("Location: Index.php?err=incorrectLogin");
-        }
+            else
+            {
+                header("Location: Index.php?err=incorrectLogin");
+                return false;
+            }
 
     }
 
@@ -108,14 +109,12 @@ class Patient extends User_class
             {
                 if($fileSize < 20000000)
                 {
-                    $dbh = new DB_Handler();
-                    $user = new Doctor($dbh);
                     $fileNameNew = "User". $_SESSION['userID'] . "." . $fileActualExt;
                     //$_SESSION['photo'] = $fileNameNew;
                     $this->dbh->runQuery("UPDATE docstime.patient SET photo = '$fileNameNew' WHERE pid = ?", array("$userID"));
                     $fileDestination = 'uploads/pics/patient/'. $fileNameNew;
                     move_uploaded_file($filetmp_name, $fileDestination);
-                    //header("Location: MainPage.php?upload=succ");
+                    header("Location: MainPage.php?upload=succ");
                 }
                 else
                 {

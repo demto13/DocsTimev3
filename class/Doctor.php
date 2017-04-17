@@ -90,6 +90,7 @@ class Doctor extends User_class
             else
             {
                 header("Location: Index.php?err=incorrectLogin");
+                return false;
             }
 
     }
@@ -115,14 +116,12 @@ class Doctor extends User_class
             {
                 if($fileSize < 20000000)
                 {
-                    $dbh = new DB_Handler();
-                    $user = new Doctor($dbh);
                     $fileNameNew = "User". $_SESSION['userID'] . "." . $fileActualExt;
                     //$_SESSION['photo'] = $fileNameNew;
                     $this->dbh->runQuery("UPDATE docstime.doctor SET photo = '$fileNameNew' WHERE did = ?", array("$userID"));
                     $fileDestination = 'uploads/pics/doctor/'. $fileNameNew;
                     move_uploaded_file($filetmp_name, $fileDestination);
-                    //header("Location: MainPage.php?upload=succ");
+                    header("Location: MainPage.php?upload=succ");
                 }
                 else
                 {

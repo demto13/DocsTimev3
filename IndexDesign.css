@@ -39,7 +39,6 @@ body
     font-family: fantasy;
     color: deepskyblue;
     display: inline;
-
     font-size: 4em;
 }
 
@@ -81,7 +80,7 @@ blockquote
     padding: 5%;
 }
 
-footer-row a
+.footer-row a
 {
     color: white;
     margin: 10%;
