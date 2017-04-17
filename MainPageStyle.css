@@ -44,10 +44,20 @@ body
     margin: 2% auto;
     color: deeppink;
 }
+.nav-tabs
+{
+    margin-top: 10%;
+}
 
-.colTab
+.tab-content
 {
 
+    margin-bottom: 20%;
+}
+
+.icon-bar
+{
+    background-color: white;
 }
 
 .topics
