@@ -68,13 +68,36 @@ foreach($values as $value)
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-        echo"{$row['name']} - ";
-        echo"{$row['did']} - ";
-        echo"{$row['userName']} - ";
-        echo"{$row['aop']} - ";
-        echo"{$row['base']} - ";
-        echo"<br/>";
+        if($row['photo'] != null)
+        {
+            $picSource = "'uploads/pics/doctor/{$row['photo']}'";
+
+        }
+        else
+        {
+            $picSource = "'uploads/pics/defaultimg.jpg'";
+        }
+
+        echo"<img class='responsive' src='uploads/pics/defaultimg.jpg' alt='profile picture'>";
+
+        echo"{$row['name']}";
+
+        echo <<<__END
+            <form action="ViewDocProfile.php" method="post">
+                <button type='submit' value='viewProfile'>View Profile</button>";
+            </form>
+__END;
+
+
+        echo"<br />";
     }
 
+
+echo"{$row['name']} - ";
+echo"{$row['did']} - ";
+echo"{$row['userName']} - ";
+echo"{$row['aop']} - ";
+echo"{$row['base']} - ";
+echo"<br/>";
 ?>
 

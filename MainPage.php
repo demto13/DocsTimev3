@@ -62,7 +62,7 @@ echo <<<__END
             </nav><br /><br />
         </div>
         <div class="container main">
-            <p style="display:inline;" class="welcome"><span class="glyphicon glyphicon-user"></span> Welcome {$_SESSION['userName']}</p>
+            <p style="display:inline;" class="welcome"><span class="glyphicon glyphicon-user"></span> Welcome {$_SESSION['name']}</p>
             <div class="row">
                 <div class="col-pics col-sm-3">
                     
@@ -105,7 +105,7 @@ __END;
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <h3>HOME</h3>
-                            <p>Welcome {$_SESSION['userName']} at DocsTime the ultimate doctors appointment booking system. Hope you will find it useful!</p>
+                            <p>Welcome {$_SESSION['name']} at DocsTime the ultimate doctors appointment booking system. Hope you will find it useful!</p>
                             <p>There are doctors and patients registering every day so if you do not find what you are after, please check back later!</p>
                         </div>
                         <div id="menu1" class="tab-pane fade">
@@ -191,24 +191,17 @@ __END;
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
                             <h3>HOME</h3>
-                            <p>Welcome John Smith to your profile. You are at the best place if you are looking to meet some of the
-                            hottest students!</p>
-                            <p>Hope you will find your perfect match in here soon!</p>
+                            <p>Welcome {$_SESSION['name']} at DocsTime the ultimate doctors appointment booking system. Hope you will find it useful!</p>
+                            <p>There are doctors and patients registering every day so if you do not find what you are after, please check back later!</p>
                         </div>
                         <div id="menu1" class="tab-pane fade">
                             <h3>My Profile</h3>
                             <table class="table">
-                                <tr><th>First name</th><td>John</td></tr>
-                                <tr><th>Last name</th><td>Smith</td></tr>
-                                <tr><th>Date of Birth</th><td>01/01/1999</td></tr>
-                                <tr><th>Campus email</th><td>student@campus.com</td></tr>
-                                <tr><th>Height</th><td>190</td></tr>
-                                <tr><th>Gender</th><td>Male</td></tr>
-                                <tr><th>Sexual orientation</th><td>Straight</td></tr>
-                                <tr><th>Ethnicity</th><td>White</td></tr>
-                                <tr><th>Department</th><td>IT</td></tr>
-                                <tr><th>Programme</th><td>Softech</td></tr>
-                                <tr><th>Marital Status</th><td>Single</td></tr>
+                                <tr><th>Name</th><td>{$_SESSION['name']}</td></tr>
+                                <tr><th>Area of Practice</th><td>{$_SESSION['aop']}</td></tr>
+                                <tr><th>Base Clinic</th><td>{$_SESSION['base']}</td></tr>
+                                <tr><th>Years of Practice</th><td>{$_SESSION['yop']}</td></tr>
+                                <tr><th>Username</th><td>{$_SESSION['userName']}</td></tr>
                             </table>
                             <button value="update" class="btn">Update</button>
                         </div>
@@ -266,6 +259,8 @@ __END;
                 </div>
             </div>  
         </div>
+    </body>
+    </html>
 __END;
 
                 }
