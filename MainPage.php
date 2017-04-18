@@ -26,6 +26,7 @@ else
 {
     header("Location: Index.php");
 }
+        $msg = "";
 
         if(isset($_GET['doc']))
         {
@@ -33,6 +34,7 @@ else
             //echo"$ID";
             //echo"{$user->getNeededDocName($ID)}";
             $neededDocName = $user->getNeededDocName($neededDocID);
+            $msg = "Doctor has been selected, please go to appointment maker now!";
         }
         else
         {
@@ -40,7 +42,7 @@ else
             $neededDocID = "";
         }
 
-        $msg = "";
+
         if(isset($_GET['book']))
         {
             if($_GET['book'] == "succ")
@@ -49,6 +51,22 @@ else
             }
             elseif($_GET['book'] == "err") {
                 $msg = "Appointment NOT booked! Please try again!";
+            }
+            elseif($_GET['book'] == "taken")
+            {
+                $msg = "Sorry, slot is already booked by someone else!";
+            }
+        }
+
+        if(isset($_GET['upload']))
+        {
+            if($_GET['upload'] == "succ")
+            {
+                $msg = "Photo successfully uploaded!";
+            }
+            else
+            {
+                $msg = "Problem with uploading your photo! Please try again.";
             }
         }
 
@@ -120,7 +138,7 @@ __END;
 
                 if($_SESSION['type'] == "patient") {
                     echo <<<__END
-                 
+                 <h4>{$msg}</h4>
                 <div class="col-md-7 colTab">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>

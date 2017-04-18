@@ -17,7 +17,7 @@
     {
         if($_GET['err'] == "incorrectLogin")
         {
-            echo "<p>Incorrect login credentials</p>";
+            echo "<h4>Incorrect login credentials</h4>";
         }
     }
 
@@ -25,7 +25,7 @@
     {
         if ($_GET['reg'] == "ex")
         {
-            echo"<p>UserName already exists!</p>";
+            echo"<h4>UserName already exists!</h4>";
         }
     }
 
@@ -62,11 +62,11 @@
             {
                 if($_GET['err'] == "unsetType")
                 {
-                    echo"<p>Please select type of user</p>";
+                    echo"<h4>Please select type of user</h4>";
                 }
                 elseif($_GET['err'] == "noFill")
                 {
-                    echo"<p>Please fill in all the boxes</p>";
+                    echo"<h4>Please fill in all the boxes</h4>";
                 }
             }
             elseif(isset($_GET['reg']))
@@ -75,7 +75,7 @@
 
                 if($reg == "succ")
                 {
-                    echo"<p>Registered successfully</p>";
+                    echo"<h4>Registered successfully</h4>";
                 }
             }
             ?>

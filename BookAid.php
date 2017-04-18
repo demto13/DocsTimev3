@@ -19,10 +19,10 @@ $dbh = new DB_Handler();
 $userDoc = new Doctor($dbh);
 $userPat = new Patient($dbh);
 
-if((isset($_POST['neededDocID'])) &&
-  (isset($_POST['pid'])) &&
-  (isset($_POST['date'])) &&
-  (isset($_POST['time'])))
+if(($_POST['neededDocID'] != "") &&
+  ($_POST['pid'] != "") &&
+  ($_POST['date'] != "") &&
+  ($_POST['time'] != ""))
   {
       $pid = $_POST['pid'];
       $did = $_POST['neededDocID'];
@@ -35,7 +35,7 @@ if((isset($_POST['neededDocID'])) &&
       }
       else
       {
-          header("Location: MainPage.php?book=err");
+          header("Location: MainPage.php?book=taken");
       }
   }
 else
