@@ -8,6 +8,11 @@
 
 session_start();
 
+if(isset($_POST['bkbtn']))
+{
+    header("Location: MainPage.php");
+}
+
 $docResultID = $_POST['docID'];
 $docResultName = $_POST['docName'];
 $docResultAop = $_POST['docAop'];

@@ -33,7 +33,7 @@ elseif($_SESSION['photo'] == null)
 </head>
 <body>
     <div class="container-fluid header">
-        <p class="navbar-brand" style="display: inline;">
+        <p class="navbar-brand">
         <h1>D</h1><h2>ocs</h2><h1>T</h1><h2>ime</h2>
         </p>
         <form action="SearchDoc.php" method="post">

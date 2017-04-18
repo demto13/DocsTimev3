@@ -1,0 +1,23 @@
+body
+{
+    background: linear-gradient(to bottom right, limegreen, white);
+    width: 80%;
+    margin: 5% auto;
+    padding: 5%;
+}
+
+img
+{
+    width: 10%;
+    display: inline;
+    margin: 5% 5%;
+}
+
+p
+{
+    color: deeppink;
+    font-family: fantasy;
+    font-size: 2em;
+    display: inline;
+    margin: 5% 5%;
+}

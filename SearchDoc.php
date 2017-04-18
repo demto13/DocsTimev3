@@ -56,13 +56,7 @@ if(isset($_POST['baseSearch']))
 }
 
 
-echo"{$query}<br/>";
-foreach($values as $value)
-{
-    echo"value - $value<br/>";
-}
 
-    echo"whilerow = stmt->fetch echo name<br/>";
 
     $stmt = $dbh->runQuery($query, $values);
 
@@ -81,25 +75,40 @@ foreach($values as $value)
         //echo"{$picSource}";
         echo"<img class='responsive' src={$picSource} alt='profile picture'>";
 
-        echo"{$row['name']}";
+        echo"<p>{$row['name']}</p>";
 
         echo <<<__END
-            <form action="ViewDocProfile.php" method="post">                
-                <input type='submit' value='View Profile'>
-                <input type="hidden" name="docID" value="{$row['did']}">
-                <input type="hidden" name="docName" value="{$row['name']}">
-                <input type="hidden" name="docAop" value="{$row['aop']}">
-                <input type="hidden" name="docBase" value="{$row['base']}">
-                <input type="hidden" name="docYop" value="{$row['yop']}">
-                <input type="hidden" name="docAboutMe" value="{$row['about']}">
-                <input type="hidden" name="docPhoto" value="{$row['photo']}">
-            </form>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <link href="SearchDocDesign.css" type="text/css" rel="stylesheet">
+                <title>Search Page</title>
+            </head>
+            <body>              
+                <form action="ViewDocProfile.php" method="post">      
+                    <input type="hidden" name="docID" value="{$row['did']}">
+                    <input type="hidden" name="docName" value="{$row['name']}">
+                    <input type="hidden" name="docAop" value="{$row['aop']}">
+                    <input type="hidden" name="docBase" value="{$row['base']}">
+                    <input type="hidden" name="docYop" value="{$row['yop']}">
+                    <input type="hidden" name="docAboutMe" value="{$row['about']}">
+                    <input type="hidden" name="docPhoto" value="{$row['photo']}">
+                    <input type='submit' value='View Profile'>
+                </form>
 __END;
 
 
         echo"<br />";
     }
+    echo"<a href='MainPage.php'>Back to Main Page</a>";
 
+    echo"</body>";
+    echo"</html>";
 
 ?>
 
