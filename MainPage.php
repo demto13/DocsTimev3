@@ -166,7 +166,9 @@ __END;
                                 <h3>Book appointment</h3>
                                 <label for="doctor">With Doctor</label>
                                 <p>{$neededDocName}</p>
-                                <form action="BookAid.php method="post">
+                                <form action="BookAid.php" method="post">
+                                    <input type="hidden" value="{$neededDocID}" name="neededDocID">
+                                    <input type="hidden" value="{$_SESSION['userID']} name="pid">
                                     <label for="date">Date of Appointment</label>
                                     <input class="form-control" id="date" type="date" name="date">
                                     <label for="time">Available Appointment</label>

@@ -145,7 +145,7 @@ class Patient extends User_class
 
     public function bookAppt($date, $time, $did, $pid)
     {
-        $checkParam = array($did, $pid, $date, $time);
+        $checkParam = array('null', $did, $pid, $date, $time);
         $check = $this->dbh->runQuery("select * from docstime.appointments where did = ?", $checkParam);
 
         $userRow = $check->fetch(PDO::FETCH_ASSOC);

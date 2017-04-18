@@ -19,10 +19,20 @@ $dbh = new DB_Handler();
 $userDoc = new Doctor($dbh);
 $userPat = new Patient($dbh);
 
+echo"{$_POST['pid']}";
+echo"{$_POST['neededDocID']}";
+echo"{$_POST['date']}";
+echo"{$_POST['time']}";
+
+$pid = $_POST['pid'];
+$did = $_POST['neededDocID'];
 $date = $_POST['date'];
 $time = $_POST['time'];
 
-
+if($userPat->bookAppt($date, $time, $did, $pid))
+{
+    echo"HOOOORAYYY!";
+}
 
 
 ?>
