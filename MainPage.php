@@ -68,7 +68,7 @@ echo <<<__END
                     
 __END;
 
-                    if ($_SESSION['photo'] != null)
+                    if ($_SESSION['photo'] != "null")
                     {
                         if ($type == "doctor")
                         {
@@ -79,7 +79,7 @@ __END;
                             echo "<img class='responsive' src='uploads/pics/patient/{$_SESSION['photo']} ' alt='profile picture'>";
                         }
                     }
-                    elseif($_SESSION['photo'] == null)
+                    else
                     {
                         echo "<img class='responsive' src='uploads/pics/defaultimg.jpg' alt='profile picture'>";
                     }

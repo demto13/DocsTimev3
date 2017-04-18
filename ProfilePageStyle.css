@@ -1,0 +1,61 @@
+html
+{
+    height: 100%;
+}
+body
+{
+    background: linear-gradient(to bottom right, limegreen, white);
+    background-repeat: no-repeat;
+}
+
+.header h1
+{
+    color: red;
+    font-family: fantasy;
+    display: inline;
+    font-size: 6em;
+}
+
+.header h2
+{
+    color: deepskyblue;
+    font-family: fantasy;
+    display: inline;
+    font-size: 4em;
+    margin: 0px;
+}
+
+.header
+{
+    margin-bottom: 10%;
+}
+
+a
+{
+    float: right;
+}
+
+.pic img
+{
+    width: 80%;
+}
+
+.about
+{
+    text-align: center;
+    color: deeppink;
+}
+
+.about h4
+{
+    font-size: 3em;
+    font-family: fantasy;
+    color: white;
+}
+
+.tableDoc h4
+{
+    font-size: 3em;
+    font-family: fantasy;
+    color: white;
+}
