@@ -143,9 +143,25 @@ class Patient extends User_class
         //Could transfer the code from SearchDoc.php as an enhancement
     }
 
-    public function bookAppt()
+    public function bookAppt($date, $time, $did, $pid)
     {
+        $checkParam = array($did, $pid, $date, $time);
+        $check = $this->dbh->runQuery("select * from docstime.appointments where did = ?", $checkParam);
 
+        $userRow = $check->fetch(PDO::FETCH_ASSOC);
+
+        if($userRow == null)
+        {
+            $values = ['null', $did, $pid, $date, $time];
+
+            $this->insert($values);
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
