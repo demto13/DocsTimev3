@@ -27,6 +27,19 @@ else
     header("Location: Index.php");
 }
 
+        if(isset($_GET['doc']))
+        {
+            $neededDocID = $_GET['doc'];
+            //echo"$ID";
+            //echo"{$user->getNeededDocName($ID)}";
+            $neededDocName = $user->getNeededDocName($neededDocID);
+        }
+        else
+        {
+            $neededDocName = "";
+        }
+
+
 echo <<<__END
     <!DOCTYPE html>
     <html lang="en">
@@ -151,32 +164,33 @@ __END;
                         </div>
                         <div id="menu3" class="tab-pane fade">
                                 <h3>Book appointment</h3>
-                                <label for="doctor">Doctor</label>
-                                <select name="doctor">
-                                </select>
-                                <label for="date">Date of Appointment</label>
-                                <input class="form-control" id="date" type="date" name="date">
-                                <label for="time">Available Appointment</label>
-                                <select class="form-control" name="time">
-                                    <option value="08:00">08:00</option>
-                                    <option value="08:30">08:30</option>
-                                    <option value="09:00">09:00</option>
-                                    <option value="09:30">09:30</option>
-                                    <option value="10:00">10:00</option>
-                                    <option value="10:30">10:30</option>
-                                    <option value="11:00">11:00</option>
-                                    <option value="11:30">11:30</option>
-                                    <option value="12:00">12:00</option>
-                                    <option value="12:30">12:30</option>
-                                    <option value="13:00">13:00</option>
-                                    <option value="13:30">13:30</option>
-                                    <option value="14:00">14:00</option>
-                                    <option value="14:30">14:30</option>
-                                    <option value="15:00">15:00</option>
-                                    <option value="15:30">15:30</option>
-                                    <option value="16:00">16:00</option>
-                                </select>
-                                <button value="update" class="btn">Update</button>
+                                <label for="doctor">With Doctor</label>
+                                <p>{$neededDocName}</p>
+                                <form action="BookAid.php method="post">
+                                    <label for="date">Date of Appointment</label>
+                                    <input class="form-control" id="date" type="date" name="date">
+                                    <label for="time">Available Appointment</label>
+                                    <select class="form-control" name="time">
+                                        <option value="08:00">08:00</option>
+                                        <option value="08:30">08:30</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="09:30">09:30</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="10:30">10:30</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="11:30">11:30</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="12:30">12:30</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="13:30">13:30</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="14:30">14:30</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="15:30">15:30</option>
+                                        <option value="16:00">16:00</option>
+                                    </select>
+                                    <button value="book" class="btn">Book</button>
+                                </form>                                
                         </div>
                     </div>
                 </div>

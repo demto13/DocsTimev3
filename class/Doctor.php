@@ -11,6 +11,7 @@ require_once "Hash_Pwd.php";
 require_once "DB_Connect.php";
 require_once "DB_Handler.php";
 
+
 class Doctor extends User_class
 {
     public $userName;// = "User106";
@@ -143,5 +144,15 @@ class Doctor extends User_class
         }
     }
 
+    public function getNeededDocName($id)
+    {
+
+        $ID = array("$id");
+        $stmt = $this->dbh->runQuery("SELECT * FROM docstime.doctor WHERE did = ?", $ID);
+
+        $userRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $userRow['name'];
+    }
 
 }

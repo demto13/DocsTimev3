@@ -20,10 +20,15 @@
             echo "<p>Incorrect login credentials</p>";
         }
     }
-    if ($_GET['reg'] == "ex")
+
+    if(isset($_GET['reg']))
+    {
+        if ($_GET['reg'] == "ex")
         {
             echo"<p>UserName already exists!</p>";
         }
+    }
+
     ?>
 
     <div class="container">
