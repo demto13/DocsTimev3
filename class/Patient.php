@@ -140,6 +140,12 @@ class Patient extends User_class
 
     public function SearchDoc()
     {
+        //Could transfer the code from SearchDoc.php as an enhancement
+    }
+
+    public function bookAppt()
+    {
 
     }
+
 }

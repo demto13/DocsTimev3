@@ -17,13 +17,13 @@
     {
         if($_GET['err'] == "incorrectLogin")
         {
-        echo"<p>Incorrect login credentials</p>";
-        }
-        elseif ($_GET['err'] == "exists")
-        {
-            echo"UserName already exists!";
+            echo "<p>Incorrect login credentials</p>";
         }
     }
+    if ($_GET['reg'] == "ex")
+        {
+            echo"<p>UserName already exists!</p>";
+        }
     ?>
 
     <div class="container">

@@ -150,13 +150,32 @@ __END;
                             </form>
                         </div>
                         <div id="menu3" class="tab-pane fade">
-                            <h3>About me</h3>
-                                <h4>My interests and hobbies</h4>
-                                <p>I like sports and music and many many other things which you can find
-                                out if we can meet up for a drink or two!</p>
-                                <h4>I am looking for</h4>
-                                <p>A nice looking young person with a fun personality and
-                                great attitude. That person must be sporty and play music too.</p>
+                                <h3>Book appointment</h3>
+                                <label for="doctor">Doctor</label>
+                                <select name="doctor">
+                                </select>
+                                <label for="date">Date of Appointment</label>
+                                <input class="form-control" id="date" type="date" name="date">
+                                <label for="time">Available Appointment</label>
+                                <select class="form-control" name="time">
+                                    <option value="08:00">08:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                </select>
                                 <button value="update" class="btn">Update</button>
                         </div>
                     </div>
@@ -184,9 +203,7 @@ __END;
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
                         <li><a data-toggle="tab" href="#menu1">My Profile</a></li>
-                        <li><a data-toggle="tab" href="#menu2">Search for doctor</a></li>
-                        <li><a data-toggle="tab" href="#menu3">Manage Appointments</a></li>
-                        <li><a data-toggle="tab" href="#menu4">View Diary</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Manage Appointments</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">
@@ -206,43 +223,7 @@ __END;
                             <button value="update" class="btn">Update</button>
                         </div>
                         <div id="menu2" class="tab-pane fade">
-                            <h3></h3>
-                            <form action="#" method="post">
-                                <div class="form-group">
-                                    <h1>Search our singles</h1>
-                                    <label for="gender">Gender</label>
-                                    <select id="gender" name="gender" class="form-control">
-                                        <option value="Female">Female</option>
-                                        <option value="Male">Male</option>
-                                    </select>
-                                    <label for="age">Age group</label>
-                                    <select id="age" class="form-control" name="age">
-                                        <option value="18-20">18-20</option>
-                                        <option value="21-25">21-25</option>
-                                        <option value="26-30">26-30</option>
-                                        <option value="30+">30+</option>
-                                    </select>
-                                    <label for="ethnicity">Ethnicity</label>
-                                    <select id="ethnicity" class="form-control" name="ethnicity">
-                                        <option value="white">White</option>
-                                        <option value="Black">Black</option>
-                                        <option value="Black">Asian</option>
-                                        <option value="Black">Indian</option>
-                                        <option value="Black">Other</option>
-                                    </select>
-                                </div>
-                                <input type="submit" class="btn" value="Search!">
-                            </form>
-                        </div>
-                        <div id="menu3" class="tab-pane fade">
-                            <h3>About me</h3>
-                                <h4>My interests and hobbies</h4>
-                                <p>I like sports and music and many many other things which you can find
-                                out if we can meet up for a drink or two!</p>
-                                <h4>I am looking for</h4>
-                                <p>A nice looking young person with a fun personality and
-                                great attitude. That person must be sporty and play music too.</p>
-                                <button value="update" class="btn">Update</button>
+                            <h3>Manage Appointments</h3>
                         </div>
                     </div>
                 </div>

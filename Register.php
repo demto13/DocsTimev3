@@ -56,7 +56,7 @@ if(isset($_POST['typeReg']))
             }
             else
             {
-                header("Location: Index.php?reg=exists");
+                header("Location: Index.php?reg=ex");
             }
 
         }
@@ -98,7 +98,7 @@ if(isset($_POST['typeReg']))
             }
             else
             {
-                header("Location: Index.php?reg=exists");
+                header("Location: Index.php?reg=ex");
             }
 
         }

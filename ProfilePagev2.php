@@ -39,6 +39,9 @@ else
         <div class="row row2">
             <div class="col-md-3 pic">
                 <?PHP echo"<img class='responsive' src={$photoDisplay} alt='profile picture'>"; ?>
+                <form action="ProfilePagev2.php" method="post">
+                    <button class="btn" name="book">Book an Appointment with me!</button>
+                </form>
             </div>
             <div class="col-md-4 tableDoc">
                 <h4>My Details</h4>
@@ -59,3 +62,10 @@ else
 
 </body>
 </html>
+
+<?PHP
+    if(isset($_POST['book']))
+    {
+        header("Location: MainPage.php?doc={$_SESSION['searchDocResultID']}");
+    }
+?>
