@@ -19,3 +19,26 @@ elseif($_SESSION['photo'] == null)
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="ProfilePageDesign.css" type="text/css" rel="stylesheet">
+    <title>Profile Page</title>
+</head>
+<body>
+    <div class="container-fluid header">
+        <p class="navbar-brand" style="display: inline;">
+        <h1>D</h1><h2>ocs</h2><h1>T</h1><h2>ime</h2>
+        </p>
+        <form action="SearchDoc.php" method="post">
+            <button class="btn" type="submit" name="logout"><span class="glyphicon glyphicon-log-out"></span> Back</button></li>
+        </form>
+    </div>
+</body>
+</html>

@@ -68,7 +68,7 @@ foreach($values as $value)
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
-        if($row['photo'] != null)
+        if($row['photo'] != "null")
         {
             $picSource = "'uploads/pics/doctor/{$row['photo']}'";
 
@@ -78,13 +78,21 @@ foreach($values as $value)
             $picSource = "'uploads/pics/defaultimg.jpg'";
         }
 
-        echo"<img class='responsive' src='uploads/pics/defaultimg.jpg' alt='profile picture'>";
+        //echo"{$picSource}";
+        echo"<img class='responsive' src={$picSource} alt='profile picture'>";
 
         echo"{$row['name']}";
 
         echo <<<__END
-            <form action="ViewDocProfile.php" method="post">
-                <button type='submit' value='viewProfile'>View Profile</button>";
+            <form action="ViewDocProfile.php" method="post">                
+                <input type='submit' value='View Profile'>
+                <input type="hidden" name="docID" value="{$row['did']}">
+                <input type="hidden" name="docName" value="{$row['name']}">
+                <input type="hidden" name="docAop" value="{$row['aop']}">
+                <input type="hidden" name="docBase" value="{$row['base']}">
+                <input type="hidden" name="docYop" value="{$row['yop']}">
+                <input type="hidden" name="docAboutMe" value="{$row['about']}">
+                <input type="hidden" name="docPhoto" value="{$row['photo']}">
             </form>
 __END;
 
@@ -93,11 +101,5 @@ __END;
     }
 
 
-echo"{$row['name']} - ";
-echo"{$row['did']} - ";
-echo"{$row['userName']} - ";
-echo"{$row['aop']} - ";
-echo"{$row['base']} - ";
-echo"<br/>";
 ?>
 
