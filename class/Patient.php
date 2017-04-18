@@ -36,22 +36,26 @@ class Patient extends User_class
         $this->email = $email;
         $this->medicalHistory = null;
 
+
+
         $checkParam = array($this->userName);
         $check = $this->dbh->runQuery("select * from docstime.patient where userName = ?", $checkParam);
+        $userRow = $check->fetch(PDO::FETCH_ASSOC);
 
-
-        /*if($check != null)
+        if($userRow['pid'] == "")
         {
-            echo"Already exists";
-          //header("Location index.php?err=userNameExists");
+            $values = ['null', $this->name, $this->dob,  $this->phone, $this->address, $this->email,
+                $this->photo, $this->userName, $this->password];
+
+            $this->insert($values);
+            return true;
         }
         else
-        {*/
-        $values = ['null', $this->name, $this->dob,  $this->phone, $this->address, $this->email,
-             $this->photo, $this->userName, $this->password];
+        {
+            return false;
+        }
 
-        $this->insert($values);
-        //}
+
     }
 
     public function login($temp_userName, $temp_pwd)

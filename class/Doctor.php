@@ -42,22 +42,24 @@ class Doctor extends User_class
         $this->yearsOfPractice = $yop;
         $this->aboutMe = $aboutMe;
 
+
         $checkParam = array($this->userName);
         $check = $this->dbh->runQuery("select * from docstime.doctor where userName = ?", $checkParam);
+        $userRow = $check->fetch(PDO::FETCH_ASSOC);
 
-
-        /*if($check != null)
+        if($userRow['did'] == "")
         {
-            echo"Already exists";
-          //header("Location index.php?err=userNameExists");
-        }
-        else
-        {*/
-           $values = ['null', $this->dob, $this->name, $this->areaOfPractice, $this->baseClinic, $this->yearsOfPractice,
-               $this->aboutMe, $this->photo, $this->userName, $this->password];
+            $values = ['null', $this->dob, $this->name, $this->areaOfPractice, $this->baseClinic, $this->yearsOfPractice,
+                $this->aboutMe, $this->photo, $this->userName, $this->password];
 
             $this->insert($values);
-        //}
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     public function login($temp_userName, $temp_pwd)

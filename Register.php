@@ -38,7 +38,7 @@ if(isset($_POST['typeReg']))
             /*public function createProfile
             ($dbh, $un, $pwd, $name, $dob, $photo,
             $aop, $baseClinic, $yop, $aboutMe)*/
-            $newDoc->createProfile(
+            if($newDoc->createProfile(
                 $_POST['userNameReg'],
                 $token,
                 $_POST['nameReg'],
@@ -47,12 +47,18 @@ if(isset($_POST['typeReg']))
                 $_POST['aopReg'],
                 $_POST['baseReg'],
                 $_POST['yopReg'],
-                $_POST['aboutMeReg']);
+                $_POST['aboutMeReg']))
+            {
+                $newDoc->getDbh()->disconnect();
+                $newDoc = null;
 
-            $newDoc->getDbh()->disconnect();
-            $newDoc = null;
+                header("Location: Index.php?reg=succ");
+            }
+            else
+            {
+                header("Location: Index.php?reg=exists");
+            }
 
-            header("Location: Index.php?reg=succ");
         }
         else
         {
@@ -75,7 +81,7 @@ if(isset($_POST['typeReg']))
             // (Patient) public function __construct($un, $pwd, $name, $dob, $photo, $phone, $address, $email, $medicalHistory)
             $newPatient = new Patient($dbh);
 
-            $newPatient->createProfile(
+            if($newPatient->createProfile(
                 $_POST['userNameReg'],
                 $token,
                 $_POST['nameReg'],
@@ -83,12 +89,18 @@ if(isset($_POST['typeReg']))
                 $_POST['photoReg'],
                 $_POST['phoneReg'],
                 $_POST['addressReg'],
-                $_POST['emailReg']);
+                $_POST['emailReg']))
+            {
+                $newPatient->getDbh()->disconnect();
+                $newPatient = null;
 
-            $newPatient->getDbh()->disconnect();
-            $newPatient = null;
+                header("Location: Index.php?reg=succ");
+            }
+            else
+            {
+                header("Location: Index.php?reg=exists");
+            }
 
-            header("Location: Index.php?reg=succ");
         }
         else
         {

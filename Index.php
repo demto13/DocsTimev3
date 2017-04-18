@@ -19,6 +19,10 @@
         {
         echo"<p>Incorrect login credentials</p>";
         }
+        elseif ($_GET['err'] == "exists")
+        {
+            echo"UserName already exists!";
+        }
     }
     ?>
 
@@ -99,7 +103,7 @@
                             <option value="rach">Royal Aberdeen Children Hospital</option>
                         </select>
                         <label for="dobReg">Date of Birth</label>
-                        <input class="form-control" type="text" id="dobReg" name="dobReg" required="required">
+                        <input class="form-control" type="date" id="dobReg" name="dobReg" required="required">
                         <label for="nameReg">Name</label>
                         <input class="form-control" type="text" id="nameReg" name="nameReg" required="required">
                         <label for="yopReg">Years of Practice</label>
@@ -125,7 +129,7 @@
                         <label for="phoneReg">Phone</label>
                         <input class="form-control" type="text" id="phoneReg" name="phoneReg" required="required">
                         <label for="dobReg">Date of Birth</label>
-                        <input class="form-control" type="text" id="dobReg" name="dobReg" required="required">
+                        <input class="form-control" type="date" id="dobReg" name="dobReg" required="required">
                         <label for="nameReg">Name</label>
                         <input class="form-control" type="text" id="nameReg" name="nameReg" required="required">
                         <input class="form-control" type="hidden" id="photoReg" name="photoReg" value="null">
