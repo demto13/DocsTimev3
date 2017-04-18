@@ -62,6 +62,7 @@ if(isset($_POST['baseSearch']))
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
     {
+
         if($row['photo'] != "null")
         {
             $picSource = "'uploads/pics/doctor/{$row['photo']}'";

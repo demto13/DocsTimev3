@@ -28,6 +28,8 @@ body
 .header
 {
     margin-bottom: 10%;
+    border-bottom: 1px solid white;
+    border-radius: 10%;
 }
 
 a

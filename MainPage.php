@@ -20,7 +20,7 @@ if($_SESSION['userID'] != null)
     $user = new Doctor($dbh);
     $type = $_SESSION['type'];
 
-    echo "Welcome {$_SESSION['userID']} - {$_SESSION['userName']} - you are a : {$_SESSION['type']} Photo: {$_SESSION['photo']}:  you are logged in";
+    //echo "Welcome {$_SESSION['userID']} - {$_SESSION['userName']} - you are a : {$_SESSION['type']} Photo: {$_SESSION['photo']}:  you are logged in";
 }
 else
 {
