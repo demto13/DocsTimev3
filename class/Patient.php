@@ -145,16 +145,18 @@ class Patient extends User_class
 
     public function bookAppt($date, $time, $did, $pid)
     {
-        $checkParam = array('null', $did, $pid, $date, $time);
-        $check = $this->dbh->runQuery("select * from docstime.appointments where did = ?", $checkParam);
+        $checkParam = array($did, $pid, $date, $time);
+        $check = $this->dbh->runQuery("select * from docstime.appointments where did = ? AND pid = ? AND date = ? AND time = ?", $checkParam);
 
         $userRow = $check->fetch(PDO::FETCH_ASSOC);
 
-        if($userRow == null)
+
+
+        if($userRow['appid'] == null)
         {
             $values = ['null', $did, $pid, $date, $time];
 
-            $this->insert($values);
+            $stmt = $this->dbh->runQuery("Insert into docstime.appointments values (?, ?, ?, ?, ?)", $values);
 
             return true;
         }

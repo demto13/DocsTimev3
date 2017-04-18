@@ -19,20 +19,39 @@ $dbh = new DB_Handler();
 $userDoc = new Doctor($dbh);
 $userPat = new Patient($dbh);
 
-echo"{$_POST['pid']}";
+if((isset($_POST['neededDocID'])) &&
+  (isset($_POST['pid'])) &&
+  (isset($_POST['date'])) &&
+  (isset($_POST['time'])))
+  {
+      $pid = $_POST['pid'];
+      $did = $_POST['neededDocID'];
+      $date = $_POST['date'];
+      $time = $_POST['time'];
+
+      if($userPat->bookAppt($date, $time, $did, $pid))
+      {
+          header("Location: MainPage.php?book=succ");
+      }
+      else
+      {
+          header("Location: MainPage.php?book=err");
+      }
+  }
+else
+{
+    header("Location: MainPage.php?book=err");
+}
+/*echo"{$_POST['pid']}";
 echo"{$_POST['neededDocID']}";
 echo"{$_POST['date']}";
-echo"{$_POST['time']}";
+echo"{$_POST['time']}";*/
 
-$pid = $_POST['pid'];
-$did = $_POST['neededDocID'];
-$date = $_POST['date'];
-$time = $_POST['time'];
 
-/*if($userPat->bookAppt($date, $time, $did, $pid))
-{
-    echo"HOOOORAYYY!";
-}*/
+
+
+
+//echo($userPat->bookAppt($date, $time, $did, $pid)['name']);
 
 
 ?>

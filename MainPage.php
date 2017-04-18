@@ -37,6 +37,19 @@ else
         else
         {
             $neededDocName = "";
+            $neededDocID = "";
+        }
+
+        $msg = "";
+        if(isset($_GET['book']))
+        {
+            if($_GET['book'] == "succ")
+            {
+                $msg = "Appointment booked successfully";
+            }
+            elseif($_GET['book'] == "err") {
+                $msg = "Appointment NOT booked! Please try again!";
+            }
         }
 
 
@@ -107,6 +120,7 @@ __END;
 
                 if($_SESSION['type'] == "patient") {
                     echo <<<__END
+                 
                 <div class="col-md-7 colTab">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
@@ -168,7 +182,7 @@ __END;
                                 <p>{$neededDocName}</p>
                                 <form action="BookAid.php" method="post">
                                     <input type="hidden" value="{$neededDocID}" name="neededDocID">
-                                    <input type="hidden" value="{$_SESSION['userID']} name="pid">
+                                    <input type="hidden" value="{$_SESSION['userID']}" name="pid">
                                     <label for="date">Date of Appointment</label>
                                     <input class="form-control" id="date" type="date" name="date">
                                     <label for="time">Available Appointment</label>
