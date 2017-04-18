@@ -29,10 +29,10 @@ $did = $_POST['neededDocID'];
 $date = $_POST['date'];
 $time = $_POST['time'];
 
-if($userPat->bookAppt($date, $time, $did, $pid))
+/*if($userPat->bookAppt($date, $time, $did, $pid))
 {
     echo"HOOOORAYYY!";
-}
+}*/
 
 
 ?>
