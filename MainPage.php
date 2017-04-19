@@ -70,6 +70,18 @@ else
             }
         }
 
+        if(isset($_GET['delete']))
+        {
+            if($_GET['delete'] == "succ")
+            {
+                $msg = "Appointment successfully deleted!";
+            }
+            else
+            {
+                $msg = "Problem with deleting your appointment! Please try again.";
+            }
+        }
+
         if(isset($_GET['upload']))
         {
             if($_GET['upload'] == "succ")
@@ -260,7 +272,8 @@ __END;
 
                         echo"<p style='display: inline;'>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
                         echo"<form action='DeleteApp.php' method='post'>";
-                        echo"<input type='submit' value='Delete'>";
+                        echo"<input type='hidden' name='appNum' value='{$row['appid']}'>";
+                        echo"<input type='submit' name='delete' value='Delete'>";
                         echo"</form>";
                     }
                     echo <<<__END
