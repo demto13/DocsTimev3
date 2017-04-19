@@ -284,10 +284,10 @@ __END;
                     <div class="row topics-box">
                         <div class="topics">
                             <h3>Quick Links</h3>
-                            <a href="http://www.bbc.co.uk/sport"><p>Sports</p></a>
-                            <a href="https://www.bbc.co.uk/music/news"><p>Music</p></a>
-                            <a href="http://www.imdb.com/"><p>Movies</p></a>
-                            <a href="http://www.rgu.ac.uk/news-and-events"><p>Campus news and events</p></a>
+                            <a href="http://www.nhs24.com/"><p>NHS24</p></a>
+                            <a href="http://www.nhs.uk/Conditions/Cold-common/Pages/Symptoms.aspx"><p>Having cold symptoms</p></a>
+                            <a href="http://www.netdoctor.co.uk/symptom-checker/"><p>Symptom checker</p></a>
+                            <a href="http://www.nhs.uk/Service-Search/GP/LocationSearch/4"><p>Find your local GP</p></a>
                         </div>
                     </div>
                 </div>
@@ -299,6 +299,7 @@ __END;
                 else
                 {
                     echo<<<__END
+                    <h4>{$msg}</h4>
                     <div class="col-md-7 colTab">
                     <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
@@ -324,6 +325,29 @@ __END;
                         </div>
                         <div id="menu2" class="tab-pane fade">
                             <h3>Manage Appointments</h3>
+__END;
+                    $query = "select * from docstime.appointments where did = ?";
+                    $values = array("$_SESSION[userID]");
+                    $counter = 0;
+
+                    $stmt = $dbh->runQuery($query, $values);
+
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $query2 = "select * from docstime.patient where pid = ?";
+                        $values2 = array("{$row['pid']}");
+                        $stmt2 = $dbh->runQuery($query2, $values2);
+                        $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                        $counter++;
+
+                        echo"<p style='display: inline;'>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
+                        echo"<form action='DeleteApp.php' method='post'>";
+                        echo"<input type='hidden' name='appNum' value='{$row['appid']}'>";
+                        echo"<input type='submit' name='delete' value='Delete'>";
+                        echo"</form>";
+                    }
+                    echo <<<__END
                         </div>
                     </div>
                 </div>
