@@ -29,7 +29,14 @@ if(($_POST['neededDocID'] != "") &&
       $date = $_POST['date'];
       $time = $_POST['time'];
 
-      if($userPat->bookAppt($date, $time, $did, $pid))
+      $dateSelected = new DateTime($date);
+      $now = new DateTime();
+
+      if($dateSelected < $now)
+      {
+          header("Location: MainPage.php?book=past");
+      }
+      elseif($userPat->bookAppt($date, $time, $did, $pid))
       {
           header("Location: MainPage.php?book=succ");
       }

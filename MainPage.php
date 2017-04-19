@@ -42,6 +42,14 @@ else
             $neededDocID = "";
         }
 
+        if($neededDocID == "")
+        {
+            $instruction = "Please find a doctor before trying to book!";
+        }
+        else
+        {
+            $instruction = "";
+        }
 
         if(isset($_GET['book']))
         {
@@ -56,6 +64,10 @@ else
             {
                 $msg = "Sorry, slot is already booked by someone else!";
             }
+            elseif($_GET['book'] == "past")
+            {
+                $msg = "You cannot book appointment in the past!";
+            }
         }
 
         if(isset($_GET['upload']))
@@ -69,6 +81,7 @@ else
                 $msg = "Problem with uploading your photo! Please try again.";
             }
         }
+
 
 
 echo <<<__END
@@ -196,6 +209,7 @@ __END;
                         </div>
                         <div id="menu3" class="tab-pane fade">
                                 <h3>Book appointment</h3>
+                                <h3>{$instruction}</h3>
                                 <label for="doctor">With Doctor</label>
                                 <p>{$neededDocName}</p>
                                 <form action="BookAid.php" method="post">
@@ -225,6 +239,31 @@ __END;
                                     </select>
                                     <button value="book" class="btn">Book</button>
                                 </form>                                
+                        </div>
+                        <div id="menu4" class="tab-pane fade">
+                                <h3>Manage Appointments</h3>
+__END;
+                    $query = "select * from docstime.appointments where pid = ?";
+                    $values = array("$_SESSION[userID]");
+                    $counter = 0;
+
+                    $stmt = $dbh->runQuery($query, $values);
+
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+                    {
+                        $query2 = "select * from docstime.doctor where did = ?";
+                        $values2 = array("{$row['did']}");
+                        $stmt2 = $dbh->runQuery($query2, $values2);
+                        $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
+
+                        $counter++;
+
+                        echo"<p style='display: inline;'>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
+                        echo"<form action='DeleteApp.php' method='post'>";
+                        echo"<input type='submit' value='Delete'>";
+                        echo"</form>";
+                    }
+                    echo <<<__END
                         </div>
                     </div>
                 </div>
