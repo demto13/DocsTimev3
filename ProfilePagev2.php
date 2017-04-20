@@ -18,6 +18,12 @@ else
 
 
 ?>
+<?PHP
+if(isset($_POST['book']))
+{
+    header("Location: MainPage.php?doc={$_SESSION['searchDocResultID']}");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,9 +69,3 @@ else
 </body>
 </html>
 
-<?PHP
-    if(isset($_POST['book']))
-    {
-        header("Location: MainPage.php?doc={$_SESSION['searchDocResultID']}");
-    }
-?>

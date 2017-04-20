@@ -26,6 +26,18 @@ else
 {
     header("Location: Index.php");
 }
+
+if(isset($_POST['logout']))
+{
+    $user->logout();
+    header("location: Index.php");
+}
+
+if(isset($_POST['update']))
+{
+    header("Location: UpdateProfilePage.php");
+}
+
         $msg = "";
 
         if(isset($_GET['doc']))
@@ -91,6 +103,18 @@ else
             else
             {
                 $msg = "Problem with uploading your photo! Please try again.";
+            }
+        }
+
+        if(isset($_GET['update']))
+        {
+            if($_GET['update'] == "succ")
+            {
+                $msg = "Profile successfully updated!";
+            }
+            else
+            {
+                $msg = "Error updating your profile please try again!";
             }
         }
 
@@ -187,7 +211,9 @@ __END;
                                 <tr><th>Phone</th><td>{$_SESSION['phone']}</td></tr>
                                 <tr><th>Username</th><td>{$_SESSION['userName']}</td></tr>
                             </table>
-                            <button value="update" class="btn">Update</button>
+                            <form action="MainPage.php" method="post">
+                                <button value="update" name="update" class="btn">Update</button>
+                            </form>
                         </div>
                         <div id="menu2" class="tab-pane fade">
                             <h3></h3>
@@ -322,7 +348,9 @@ __END;
                                 <tr><th>Years of Practice</th><td>{$_SESSION['yop']}</td></tr>
                                 <tr><th>Username</th><td>{$_SESSION['userName']}</td></tr>
                             </table>
-                            <button value="update" class="btn">Update</button>
+                            <form action="MainPage.php" method="post">
+                                <button value="update" name="update" class="btn">Update</button>
+                            </form>
                         </div>
                         <div id="menu2" class="tab-pane fade">
                             <h3>Manage Appointments</h3>
@@ -384,13 +412,6 @@ __END;
 __END;
 
                 }
-
-
-    if(isset($_POST['logout']))
-    {
-        $user->logout();
-        header("location: Index.php");
-    }
 
 
 

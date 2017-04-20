@@ -1,0 +1,21 @@
+body
+{
+    background: linear-gradient(to bottom right, limegreen, white);
+    width: 80%;
+}
+
+.btn
+{
+    border: 1px solid white;
+    border-radius: 10%;
+    background-color: deeppink;
+    color: white;
+    margin: 4% auto;
+    float: right;
+}
+
+.form-group
+{
+    width: 60%;
+    margin: 5% auto;
+}
