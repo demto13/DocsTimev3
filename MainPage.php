@@ -349,8 +349,6 @@ __END;
                         echo"</form>";
 
 
-                        //Will probably need to select the medical history files to pass on in here
-
                         echo"<form action='ViewApp.php' method='post'>";
                         echo"<input type='hidden' name='patientID' value='{$row2['pid']}'>";
                         echo"<input type='hidden' name='patientName' value='{$row2['name']}'>";
@@ -361,6 +359,8 @@ __END;
                         echo"<input type='hidden' name='patientPhoto' value='{$row2['photo']}'>";
                         echo"<input type='submit' name='view' value='View Profile of Patient'>";
                         echo"</form>";
+
+
                     }
                     echo <<<__END
                         </div>
@@ -370,10 +370,10 @@ __END;
                     <div class="row topics-box">
                         <div class="topics">
                             <h3>Quick Links</h3>
-                            <a href="http://www.bbc.co.uk/sport"><p>Sports</p></a>
-                            <a href="https://www.bbc.co.uk/music/news"><p>Music</p></a>
-                            <a href="http://www.imdb.com/"><p>Movies</p></a>
-                            <a href="http://www.rgu.ac.uk/news-and-events"><p>Campus news and events</p></a>
+                            <a href="http://www.netdoctor.co.uk/symptom-checker/"><p>Symptom checker</p></a>
+                            <a href=https://en.wikipedia.org/wiki/Main_Page"><p>Wikipedia</p></a>
+                            <a href="http://www.mednet.co.uk/"><p>MedNet</p></a>
+                            <a href="http://www.health.com/health/gallery/0,,20513624,00.html"><p>Health.com</p></a>
                         </div>
                     </div>
                 </div>

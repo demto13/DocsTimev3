@@ -27,6 +27,17 @@ else
     $photoDisplay = "'uploads/pics/defaultimg.jpg'";
 }
 
+if(isset($_GET['upload']))
+{
+    if($_GET['upload'] == "succ")
+    {
+        echo"File uploaded successfully";
+    }
+    else
+    {
+        echo"Problem with uploading file. Please try again!";
+    }
+}
 
 ?>
 
@@ -48,7 +59,7 @@ else
             <a href="MainPage.php">Back to Main Page</a>
         </div>
         <div class="row row2">
-            <div class="col-md-3 pic">
+            <div class="col-md-2 pic">
                 <?PHP echo"<img class='responsive' src={$photoDisplay} alt='profile picture'>"; ?>
             </div>
             <div class="col-md-3 tableDoc">
@@ -61,16 +72,32 @@ else
                     echo"<tr><th>Phone</th><td>{$_SESSION['patient2ViewPhone']}</td></tr>"?>;
                 </table>
             </div>
-            <div class="col-md-3 about">
+            <div class="col-md-4 about">
                 <h4>View Medical History</h4>
-                <?php echo"<p>Medical History in here</p>"; ?>
+                <?php
+
+                $userFileName = "User" . $_SESSION['patient2ViewID'];
+                $query3 = "select * from docstime.info where pid = ? and file like ?";
+                $values3 = array("{$_SESSION['patient2ViewID']}", "%{$userFileName}%");
+                $stmt3 = $dbh->runQuery($query3, $values3);
+                $counter = 0;
+
+                while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC))
+                {
+                    $counter++;
+                    echo"{$counter}. input : ";
+                    echo"{$row3['message']}";
+                    echo"<a href='{$row3['file']}'>Uploaded File{$counter}</a>";
+                }
+
+                ?>
 
             </div>
             <div class="col-md-3 about">
                 <h4>Upload Medical History</h4>
                 <form action="PatientProfilePage.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <textarea class="form-control" name="infoText" rows=6 cols=28 placeholder="Please leave a note or message if required"></textarea><br />
+                    <textarea class="form-control" name="infoText" rows=6 cols=28 placeholder="Please leave the date, a note or message if required"></textarea><br />
                     <input type="file" name="infoFile"><br />
                     <button class="btn" type="submit" name="uploadInfo">Upload info</button>(.pdf, .doc, .docx)
                 </div>
@@ -85,11 +112,6 @@ else
 <?PHP
 if(isset($_POST['uploadInfo']))
 {
-    //echo"{$file}, {$msg}, {$userID}";
-    //public function uploadMedicalHistory($file, $msg, $userID)
-    /*echo"{$_FILES['infoFile']['name']}";
-    echo"{$_POST['infoText']}";
-    echo"{$_SESSION['patient2ViewID']}";*/
 
     if($user->uploadMedicalHistory($_FILES['infoFile'], $_POST['infoText'], $_SESSION['patient2ViewID']))
     {
@@ -99,6 +121,5 @@ if(isset($_POST['uploadInfo']))
     {
         header("Location: PatientProfilePage.php?upload=err");
     }
-    //header("Location: MainPage.php?doc={$_SESSION['searchDocResultID']}");
 }
 ?>
