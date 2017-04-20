@@ -5,7 +5,7 @@
  * Date: 4/12/2017
  * Time: 8:43 AM
  */
-session_start();
+session_start(); // start session
 
 require_once "class/DB_Connect.php";
 require_once "class/DB_Handler.php";
