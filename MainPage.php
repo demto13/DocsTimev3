@@ -273,8 +273,9 @@ __END;
                         echo"<p style='display: inline;'>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
                         echo"<form action='DeleteApp.php' method='post'>";
                         echo"<input type='hidden' name='appNum' value='{$row['appid']}'>";
-                        echo"<input type='submit' name='delete' value='Delete'>";
+                        echo"<input type='submit' name='delete' value='Cancel Appointment'>";
                         echo"</form>";
+
                     }
                     echo <<<__END
                         </div>
@@ -341,10 +342,24 @@ __END;
 
                         $counter++;
 
-                        echo"<p style='display: inline;'>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
+                        echo"<p>{$counter}. Appointment at {$row['time']} on {$row['date']} with {$row2['name']}</p>";
                         echo"<form action='DeleteApp.php' method='post'>";
                         echo"<input type='hidden' name='appNum' value='{$row['appid']}'>";
                         echo"<input type='submit' name='delete' value='Delete'>";
+                        echo"</form>";
+
+
+                        //Will probably need to select the medical history files to pass on in here
+
+                        echo"<form action='ViewApp.php' method='post'>";
+                        echo"<input type='hidden' name='patientID' value='{$row2['pid']}'>";
+                        echo"<input type='hidden' name='patientName' value='{$row2['name']}'>";
+                        echo"<input type='hidden' name='patientAddress' value='{$row2['address']}'>";
+                        echo"<input type='hidden' name='patientDob' value='{$row2['dob']}'>";
+                        echo"<input type='hidden' name='patientEmail' value='{$row2['email']}'>";
+                        echo"<input type='hidden' name='patientPhone' value='{$row2['phone']}'>";
+                        echo"<input type='hidden' name='patientPhoto' value='{$row2['photo']}'>";
+                        echo"<input type='submit' name='view' value='View Profile of Patient'>";
                         echo"</form>";
                     }
                     echo <<<__END
