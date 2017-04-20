@@ -19,14 +19,6 @@ $dbh = new DB_Handler();
 $doctor = new Doctor($dbh);
 $hashing = new Hash_Pwd();
 
-/*<label for="userNameUp">UserName</label>
-
-
-
-                        <input class="form-control" type="text" id="nameUp" name="nameUp" required="required">
-                        <input class="form-control" type="text" id="yopUp" name="yopUp" required="required">*/
-
-//UPDATE t1 SET col1 = col1 + 1, col2 = col1;
 
 if(($_SESSION['type']) == "doctor")
 {
@@ -135,14 +127,6 @@ if(($_SESSION['type']) == "doctor")
 
 else
 
-    /*                  <label for="userNameUp">UserName</label>
-                        <label for="pwdUp">Password</label>
-                        <label for="emailUp">E-mail</label>
-                        <label for="addressUp">Address</label>
-                        <label for="phoneUp">Phone</label>
-                        <label for="dobUp">Date of Birth</label>
-                        <label for="nameUp">Name</label>
-                        */
 
 {
     $query = "update docstime.patient set name = ?";
@@ -228,24 +212,24 @@ else
 
     }
 
-    $query .= " where did = ?;";
+    $query .= " where pid = ?;";
     $values[] = $_SESSION['userID'];
 
-    /*if($stmt = $dbh->runQuery($query, $values))
+    if($stmt = $dbh->runQuery($query, $values))
     {
         header("Location: MainPage.php?update=succ");
     }
     else
     {
         header("Location: MainPage.php?update=err");
-    }*/
+    }
 
-    echo"{$query}" . "and the values are : ";
+    /*echo"{$query}" . "and the values are : ";
 
     foreach ($values as $item)
     {
         echo"{$item}" . "    ";
-    }
+    }*/
 }
 
 
