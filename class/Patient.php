@@ -92,6 +92,55 @@ class Patient extends User_class
 
     }
 
+    public function uploadMedicalHistory($file, $msg, $userID)
+    {
+        $fileName = $file['name'];
+        $fileType = $file['type'];
+        $filetmp_name = $file['tmp_name'];
+        $fileErr = $file['error'];
+        $fileSize = $file['size'];
+
+        echo"{$fileName}, $fileType, $filetmp_name, $fileErr, $fileSize";
+
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt)); // array method showing last element
+
+        $allowed = array('pdf', 'doc', 'docx'); // allowed extensions
+
+        if(in_array($fileActualExt, $allowed))
+        {
+            if($fileErr === 0)
+            {
+                if($fileSize < 20000000)
+                {
+                    $fileNameNew = "User". $userID . "_" . uniqid('', true) . "." . $fileActualExt;
+                    $fileDestination = 'uploads/docs/'. $fileNameNew;
+                    move_uploaded_file($filetmp_name, $fileDestination);
+
+                    $values = ['null', $msg, $fileDestination, $userID];
+                    $stmt = $this->dbh->runQuery("Insert into docstime.info values (?, ?, ?, ?)", $values);
+                    return $stmt;
+
+                    header("Location: MainPage.php?upload=succ");
+                }
+                else
+                {
+                    header("Location: MainPage.php?err=fileTooBig");
+                }
+            }
+            else
+            {
+                header("Loacation: MainPage.php?err=error");
+
+            }
+        }
+        else
+        {
+            header("Loacation: MainPage.php?err=extIncorrect");
+
+        }
+    }
+
     public function uploadFiles($file, $userID)
     {
         $fileName = $file['name'];

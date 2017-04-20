@@ -5,9 +5,17 @@
  * Date: 4/20/2017
  * Time: 6:17 PM
  */
+session_start(); // start session
 
-session_start();
+require_once "class/DB_Connect.php";
+require_once "class/DB_Handler.php";
+require_once "class/User_class.php";
+require_once "class/Doctor.php";
+require_once "class/Patient.php";
+require_once "class/Hash_Pwd.php";
 
+$dbh = new DB_Handler();
+$user = new Patient($dbh);
 
 
 if ($_SESSION['patient2ViewPhoto'] != "null")
@@ -43,7 +51,7 @@ else
             <div class="col-md-3 pic">
                 <?PHP echo"<img class='responsive' src={$photoDisplay} alt='profile picture'>"; ?>
             </div>
-            <div class="col-md-4 tableDoc">
+            <div class="col-md-3 tableDoc">
                 <h4>My Details</h4>
                 <table class="table ">
                     <?PHP echo"<tr><th>Name</th><td>{$_SESSION['patient2ViewName']}</td></tr>";
@@ -53,13 +61,44 @@ else
                     echo"<tr><th>Phone</th><td>{$_SESSION['patient2ViewPhone']}</td></tr>"?>;
                 </table>
             </div>
-            <div class="col-md-4 about">
-                <h4>Medical History</h4>
+            <div class="col-md-3 about">
+                <h4>View Medical History</h4>
                 <?php echo"<p>Medical History in here</p>"; ?>
 
+            </div>
+            <div class="col-md-3 about">
+                <h4>Upload Medical History</h4>
+                <form action="PatientProfilePage.php" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <textarea class="form-control" name="infoText" rows=6 cols=28 placeholder="Please leave a note or message if required"></textarea><br />
+                    <input type="file" name="infoFile"><br />
+                    <button class="btn" type="submit" name="uploadInfo">Upload info</button>(.pdf, .doc, .docx)
+                </div>
+                </form>
             </div>
         </div>
     </div>
 
     </body>
     </html>
+
+<?PHP
+if(isset($_POST['uploadInfo']))
+{
+    //echo"{$file}, {$msg}, {$userID}";
+    //public function uploadMedicalHistory($file, $msg, $userID)
+    /*echo"{$_FILES['infoFile']['name']}";
+    echo"{$_POST['infoText']}";
+    echo"{$_SESSION['patient2ViewID']}";*/
+
+    if($user->uploadMedicalHistory($_FILES['infoFile'], $_POST['infoText'], $_SESSION['patient2ViewID']))
+    {
+        header("Location: PatientProfilePage.php?upload=succ");
+    }
+    else
+    {
+        header("Location: PatientProfilePage.php?upload=err");
+    }
+    //header("Location: MainPage.php?doc={$_SESSION['searchDocResultID']}");
+}
+?>
