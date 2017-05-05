@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Test</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(function(){
+                $.get("DocsAPI.php?method=getDoctors&jsoncallback=?",
+                    function(data, status)
+                    {
+                        for(var aDoctor in data)
+                        {
+                            var user = data[aDoctor] ;
+                        }
+                        document.getElementById("demo").innerHTML = ("Data: <br />" + data + "<br />Status: <br />" + status);
+                        //document.getElementById("demo2").innerHTML = ("<br />Data: <br />" + data["name"] + "<br />Status: <br />" + status);
+                    });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>This is a list of the registered doctors on DocsTime!</h1>
+    <p>This would be colored in and styled in reality however for the purposes of demonstration just wanted to see if it works properly.</p>
+    <br />
+    <p id="demo"></p>
+    <p id="demo2"></p>
+</body>
+</html>

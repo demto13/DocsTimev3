@@ -105,7 +105,7 @@ class Patient extends User_class
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt)); // array method showing last element
 
-        $allowed = array('pdf', 'doc', 'docx'); // allowed extensions
+        $allowed = array('pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'); // allowed extensions
 
         if(in_array($fileActualExt, $allowed))
         {

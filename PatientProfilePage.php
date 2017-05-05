@@ -84,10 +84,13 @@ if(isset($_GET['upload']))
 
                 while($row3 = $stmt3->fetch(PDO::FETCH_ASSOC))
                 {
+                    echo"<fieldset style='border: 1px solid black; background-color: lightgreen'>";
+                    echo"<br />";
                     $counter++;
-                    echo"{$counter}. input : ";
-                    echo"{$row3['message']}";
+                    echo"<p>{$counter}. input : </p>";
+                    echo"<p>{$row3['message']}</p>";
                     echo"<a href='{$row3['file']}'>Uploaded File{$counter}</a>";
+                    echo"</fieldset>";
                 }
 
                 ?>
