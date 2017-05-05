@@ -7,15 +7,25 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
         $(function(){
-                $.get("DocsAPI.php?method=getDoctors&jsoncallback=?",
+                $.get('DocsAPI.php?method=getDoctors&jsoncallback={"docs":',
                     function(data, status)
                     {
-                        for(var aDoctor in data)
+
+                        var text = "'" + data + "'";
+                        // Test - document.getElementById("demo").innerHTML = ("Data: <br />" + text + "<br />Status: <br />" + status);
+
+                        var obj = JSON.parse(data); //parsing json data back to be an object
+
+                        var docsText = "";
+
+                        for(count = 0; count < obj.docs.length; count++) // looping through the docs array and creating a text to be displayed
                         {
-                            var user = data[aDoctor] ;
+                            docsText += "Name: " + (obj.docs[count].name) + "<br />Area of practice: " + (obj.docs[count].aop) +
+                                        "<br />Base clinic: " + (obj.docs[count].base) + "<br />About me: " + (obj.docs[count].about) + "<br /><br /><br />";
+
                         }
-                        document.getElementById("demo").innerHTML = ("Data: <br />" + data + "<br />Status: <br />" + status);
-                        //document.getElementById("demo2").innerHTML = ("<br />Data: <br />" + data["name"] + "<br />Status: <br />" + status);
+
+                        document.getElementById("demo2").innerHTML = (docsText); //display text with docs details in <p id=demo2>
                     });
         });
     </script>
@@ -25,7 +35,7 @@
     <h1>This is a list of the registered doctors on DocsTime!</h1>
     <p>This would be colored in and styled in reality however for the purposes of demonstration just wanted to see if it works properly.</p>
     <br />
-    <p id="demo"></p>
-    <p id="demo2"></p>
+    <p id="demo">Demo 1:<br /></p>
+    <p id="demo2">Demo 2:<br/></p>
 </body>
 </html>

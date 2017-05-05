@@ -34,6 +34,7 @@ function getDoctors()
 
     $sql = "SELECT name, aop, base, about FROM doctor";
     $result = $conn->query($sql);
+
 // array for holding doctors' values
     $users = array();
 
@@ -49,9 +50,10 @@ function getDoctors()
     }
 //encoding to json
     $users = json_encode($users);
+
 //echoing json content
 
-    echo $_GET['jsoncallback'] . '(<br/>' . $users . '<br />)';
+    echo $_GET['jsoncallback'] . '' . $users . '}';
 
     $conn->close();
 }
