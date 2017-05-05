@@ -12,9 +12,9 @@
 
 class DB_Connect
 {
-    private $hn = 'localhost';
-    private $db = 'docstime';
-    private $un = 'root';
+    private $hn = '';
+    private $db = 'localdb';
+    private $un = '';
     private $pw = '';
     protected $conn;
     protected $isConn;
