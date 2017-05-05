@@ -48,7 +48,7 @@ function getDoctors()
     } else {
         echo "0 results";
     }
-//encoding to json
+//encoding $users to json
     $users = json_encode($users);
 
 //echoing json content
